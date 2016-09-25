@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Lynx - web</title>
+
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<!-- favicon -->
+	<link rel="icon" type="image/png" href="/favicon.png">
+	<link rel="stylesheet" href="/theme/katex/katex.min.css">
+	<script src="/theme/katex/katex.min.js"></script>
+	<script src="/theme/katex/contrib/auto-render.min.js"></script>
+
+	<!-- Google font -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic|Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+	<!-- pygment highlighter -->
+	<link href="/theme/css/pygment.css" rel="stylesheet" type="text/css" media="screen"/>
+
+	<!-- css -->
+	<link href="/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+
+	<link href="/" type="application/atom+xml" rel="alternate" title="Lynx ATOM Feed" />
+</head>
+
+<body>
+
+    <div id="mobile-header">
+        <div id="m-logo">
+            <h1><a href="/index.html">Lynx</a></h1>
+        </div>
+        <div id="m-menu">
+            <ul>
+                <li>
+                    <a href="/index.html" id="tag-sdbar">Home</a>
+                </li>
+                <li>
+                    <a href="/archives.html" id="tag-sdbar">Archive</a>
+                </li>
+                <li>
+                    <a href="/tags.html" id="tag-sdbar">Tags</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+	<div id="page">
+
+        		<div id="content">
+
+        			<div class="post">
+        				<h2 class="title"><a href="/setting-up-pelican.html">Setting Up Pelican</a></h2>
+
+                        <p class="meta">
+                            <span class="date">Date: Sat 06 February 2016 </span><span class="posted">By:  <a href="#">Adi Ultra</a></span><span>&nbsp; # Category: <a href="/category/web.html">web</a></span>
+                        </p>
+
+                        <p class="meta">Tags :                             <span class="tag-span"><a class="tag-list" href="/tag/blog.html">blog</a> </span>
+                            <span class="tag-span"><a class="tag-list" href="/tag/pelican.html">pelican</a> </span>
+                        </p>
+
+        				<div style="clear: both;">&nbsp;</div>
+
+        				<div class="entry">
+        				 <h1>How to setup Pelican</h1>
+<p>This a the setup of pelican, the static blog creator, which converts markdown to static html pages.</p>
+<p>First off, Pelican is a command line tool, But don't scream, its perfectly sane and doesn't require your ninja skills to do cool stuff.</p>
+<h2>1. Installing Pelican</h2>
+<p>You can follow the official <a href="">guide</a> to setup Pelican. Here I Show the steps to install it for linux.</p>
+<p>Pelican can be easily installed if you have Python Installed, since python comes with pip (The package manager for python).</p>
+<div class="highlight"><pre><span></span>sudo -H pip install Markdown
+sudo -H pip install pelican
+</pre></div>
+
+
+<blockquote>
+<p>The 1st line installs markdown package for conversion from MD to HTML.</p>
+<p>Here <code>sudo -H</code> installs pelican (and Markdown) for all users, remove this to install for only the current user, that is you.</p>
+</blockquote>
+<p>Now, when pelican is installed. We can move on to create the very first blog.</p>
+<h2>2. Pelican Quick Start</h2>
+<p>As the header says, let's run the <code>pelican-quickstart</code> Command.</p>
+<blockquote>
+<p>Replace path/to/yoursite with the path of the folder where you want pelican to reside</p>
+</blockquote>
+<div class="highlight"><pre><span></span>mkdir -p ~/path/to/yoursite
+<span class="c1">#optional if you already created a folder with your file manager</span>
+
+<span class="nb">cd</span> ~/path/to/yoursite
+<span class="c1"># this changes the directory to your folder</span>
+
+pelican-quickstart
+<span class="c1"># answer the questions asked and you get your site ready</span>
+</pre></div>
+
+
+<p>Here is a sample setup :</p>
+<div class="highlight"><pre><span></span>adiultra@adiultra:~$ mkdir -p ~/Projects/pelicus
+adiultra@adiultra:~$ <span class="nb">cd</span> ~/Projects/pelicus
+adiultra@adiultra:~/Projects/pelicus$ pelican-quickstart
+Welcome to pelican-quickstart v3.6.3.
+
+This script will <span class="nb">help</span> you create a new Pelican-based website.
+
+Please answer the following questions so this script can generate the files
+needed by Pelican.
+
+
+&gt; Where <span class="k">do</span> you want to create your new web site? <span class="o">[</span>.<span class="o">]</span>
+&gt; What will be the title of this web site? Pelicus
+&gt; Who will be the author of this web site? Aditya Cool
+&gt; What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span>
+&gt; Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> n
+&gt; Do you want to <span class="nb">enable</span> article pagination? <span class="o">(</span>Y/n<span class="o">)</span> Y
+&gt; How many articles per page <span class="k">do</span> you want? <span class="o">[</span>10<span class="o">]</span>
+&gt; What is your <span class="nb">time</span> zone? <span class="o">[</span>Europe/Paris<span class="o">]</span>    Asia/Calcutta
+&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span> Y
+&gt; Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span> Y
+&gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> y
+&gt; Is this your personal page <span class="o">(</span>username.github.io<span class="o">)</span>? <span class="o">(</span>y/N<span class="o">)</span> N
+Done. Your new project is available at /home/adiultra/Projects/pelicus
+</pre></div>
+
+
+<p>Wow you have your Blog ready, but wait how do you add content? Read ON.</p>
+<h2>3. Writing Articles</h2>
+<p>In your blog there will be A folder named <code>content</code>. Since you created a new blog, It's empty, Don't worry. You will fill it very soon.</p>
+<p>In this folder create a file named whatever you like (My-first-article.md is a great name) (Remember to add <code>.md</code> to your filename since this tells it that it is markdown).</p>
+<p>Open it in your favorite text editor, I recommend <a href="http://atom.io">Atom</a> for this job since it has excellent markdown support with live preview.</p>
+<p>Add the following content to your file :</p>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">MarkDown</span> <span class="n">Exhibit</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">06</span> <span class="mi">13</span><span class="o">:</span><span class="mi">20</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Markus</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">blog</span><span class="o">,</span> <span class="n">pelican</span>
+
+<span class="err">#</span> <span class="n">An</span> <span class="n">exhibit</span> <span class="n">of</span> <span class="n">Markdown</span>
+
+<span class="n">This</span> <span class="n">note</span> <span class="n">demonstrates</span> <span class="n">some</span> <span class="n">of</span> <span class="n">what</span> <span class="o">[</span><span class="n">Markdown</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="k">is</span> <span class="n">capable</span> <span class="n">of</span> <span class="n">doing</span><span class="o">.</span>
+
+<span class="err">##</span> <span class="n">Basic</span> <span class="n">formatting</span>
+
+<span class="n">Paragraphs</span> <span class="n">can</span> <span class="n">be</span> <span class="n">written</span> <span class="n">like</span> <span class="n">so</span><span class="o">.</span> <span class="n">A</span> <span class="n">paragraph</span> <span class="k">is</span> <span class="n">the</span> <span class="n">basic</span> <span class="n">block</span> <span class="n">of</span> <span class="n">Markdown</span><span class="o">.</span> <span class="n">A</span> <span class="n">paragraph</span> <span class="k">is</span> <span class="n">what</span> <span class="n">text</span> <span class="n">will</span> <span class="n">turn</span> <span class="n">into</span> <span class="n">when</span> <span class="n">there</span> <span class="k">is</span> <span class="n">no</span> <span class="n">reason</span> <span class="n">it</span> <span class="n">should</span> <span class="n">become</span> <span class="n">anything</span> <span class="k">else</span><span class="o">.</span>
+
+<span class="n">Paragraphs</span> <span class="n">must</span> <span class="n">be</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">a</span> <span class="n">blank</span> <span class="n">line</span><span class="o">.</span> <span class="n">Basic</span> <span class="n">formatting</span> <span class="n">of</span> <span class="o">*</span><span class="n">italics</span><span class="o">*</span> <span class="n">and</span> <span class="o">**</span><span class="n">bold</span><span class="o">**</span> <span class="k">is</span> <span class="n">supported</span><span class="o">.</span> <span class="n">This</span> <span class="o">*</span><span class="n">can</span> <span class="n">be</span> <span class="o">**</span><span class="n">nested</span><span class="o">**</span> <span class="n">like</span><span class="o">*</span> <span class="n">so</span><span class="o">.</span>
+
+<span class="err">##</span> <span class="n">Lists</span>
+
+<span class="err">###</span> <span class="n">Ordered</span> <span class="n">list</span>
+
+<span class="mi">1</span><span class="o">.</span> <span class="n">Item</span> <span class="mi">1</span>
+<span class="mi">2</span><span class="o">.</span> <span class="n">A</span> <span class="n">second</span> <span class="n">item</span>
+<span class="mi">3</span><span class="o">.</span> <span class="n">Number</span> <span class="mi">3</span>
+<span class="mi">4</span><span class="o">.</span> <span class="err">Ⅳ</span>
+
+<span class="o">*</span><span class="n">Note</span><span class="o">:</span> <span class="n">the</span> <span class="n">fourth</span> <span class="n">item</span> <span class="n">uses</span> <span class="n">the</span> <span class="n">Unicode</span> <span class="n">character</span> <span class="k">for</span> <span class="o">[</span><span class="n">Roman</span> <span class="n">numeral</span> <span class="n">four</span><span class="o">][</span><span class="mi">2</span><span class="o">].*</span>
+
+<span class="err">###</span> <span class="n">Unordered</span> <span class="n">list</span>
+
+<span class="o">*</span> <span class="n">An</span> <span class="n">item</span>
+<span class="o">*</span> <span class="n">Another</span> <span class="n">item</span>
+<span class="o">*</span> <span class="n">Yet</span> <span class="n">another</span> <span class="n">item</span>
+<span class="o">*</span> <span class="n">And</span> <span class="n">there</span><span class="s1">&#39;s more...</span>
+
+<span class="s1">## Paragraph modifiers</span>
+
+<span class="s1">### Code block</span>
+
+<span class="s1">    Code blocks are very useful for developers and other people who look at code or other things that are written in plain text. As you can see, it uses a fixed-width font.</span>
+
+<span class="s1">You can also make `inline code` to add code into other things.</span>
+
+<span class="s1">### Quote</span>
+
+<span class="s1">&gt; Here is a quote. What this is should be self explanatory. Quotes are automatically indented when they are used.</span>
+
+<span class="s1">## Headings</span>
+
+<span class="s1">There are six levels of headings. They correspond with the six levels of HTML headings. You&#39;</span><span class="n">ve</span> <span class="n">probably</span> <span class="n">noticed</span> <span class="n">them</span> <span class="n">already</span> <span class="k">in</span> <span class="n">the</span> <span class="n">page</span><span class="o">.</span> <span class="n">Each</span> <span class="n">level</span> <span class="n">down</span> <span class="n">uses</span> <span class="n">one</span> <span class="n">more</span> <span class="n">hash</span> <span class="n">character</span><span class="o">.</span>
+
+<span class="err">###</span> <span class="n">Headings</span> <span class="o">*</span><span class="n">can</span><span class="o">*</span> <span class="n">also</span> <span class="n">contain</span> <span class="o">**</span><span class="n">formatting</span><span class="o">**</span>
+
+<span class="err">###</span> <span class="n">They</span> <span class="n">can</span> <span class="n">even</span> <span class="n">contain</span> <span class="err">`</span><span class="n">inline</span> <span class="n">code</span><span class="err">`</span>
+
+<span class="n">Of</span> <span class="n">course</span><span class="o">,</span> <span class="n">demonstrating</span> <span class="n">what</span> <span class="n">headings</span> <span class="n">look</span> <span class="n">like</span> <span class="n">messes</span> <span class="n">up</span> <span class="n">the</span> <span class="n">structure</span> <span class="n">of</span> <span class="n">the</span> <span class="n">page</span><span class="o">.</span>
+
+<span class="n">I</span> <span class="n">don</span><span class="s1">&#39;t recommend using more than three or four levels of headings here, because, when you&#39;</span><span class="n">re</span> <span class="n">smallest</span> <span class="n">heading</span> <span class="n">isn</span><span class="s1">&#39;t too small, and you&#39;</span><span class="n">re</span> <span class="n">largest</span> <span class="n">heading</span> <span class="n">isn</span><span class="s1">&#39;t too big, and you want each size up to look noticeably larger and more important, there there are only so many sizes that you can use.</span>
+
+<span class="s1">## URLs</span>
+
+<span class="s1">URLs can be made in a handful of ways:</span>
+
+<span class="s1">* A named link to [MarkItDown][3]. The easiest way to do these is to select what you want to make a link and hit `Ctrl+L`.</span>
+<span class="s1">* Another named link to [MarkItDown](http://www.markitdown.net/)</span>
+<span class="s1">* Sometimes you just want a URL like &lt;http://www.markitdown.net/&gt;.</span>
+
+<span class="s1">## Horizontal rule</span>
+
+<span class="s1">A horizontal rule is a line that goes across the middle of the page.</span>
+
+<span class="s1">---</span>
+
+<span class="s1">It&#39;</span><span class="n">s</span> <span class="n">sometimes</span> <span class="n">handy</span> <span class="k">for</span> <span class="n">breaking</span> <span class="n">things</span> <span class="n">up</span><span class="o">.</span>
+
+<span class="err">##</span> <span class="n">Images</span>
+
+<span class="n">Markdown</span> <span class="n">can</span> <span class="n">also</span> <span class="n">contain</span> <span class="n">images</span><span class="o">.</span> <span class="n">I</span><span class="s1">&#39;ll need to add something here sometime.</span>
+
+<span class="s1">## Finally</span>
+
+<span class="s1">There&#39;</span><span class="n">s</span> <span class="n">actually</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">more</span> <span class="n">to</span> <span class="n">Markdown</span> <span class="n">than</span> <span class="k">this</span><span class="o">.</span> <span class="n">See</span> <span class="n">the</span> <span class="n">official</span> <span class="o">[</span><span class="n">introduction</span><span class="o">][</span><span class="mi">4</span><span class="o">]</span> <span class="n">and</span> <span class="o">[</span><span class="n">syntax</span><span class="o">][</span><span class="mi">5</span><span class="o">]</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span> <span class="n">However</span><span class="o">,</span> <span class="n">be</span> <span class="n">aware</span> <span class="n">that</span> <span class="k">this</span> <span class="k">is</span> <span class="n">not</span> <span class="n">using</span> <span class="n">the</span> <span class="n">official</span> <span class="n">implementation</span><span class="o">,</span> <span class="n">and</span> <span class="k">this</span> <span class="n">might</span> <span class="n">work</span> <span class="n">subtly</span> <span class="n">differently</span> <span class="k">in</span> <span class="n">some</span> <span class="n">of</span> <span class="n">the</span> <span class="n">little</span> <span class="n">things</span><span class="o">.</span>
+
+
+  <span class="o">[</span><span class="mi">1</span><span class="o">]:</span> <span class="n">http</span><span class="o">://</span><span class="n">daringfireball</span><span class="o">.</span><span class="na">net</span><span class="sr">/projects/markdown/</span>
+  <span class="o">[</span><span class="mi">2</span><span class="o">]:</span> <span class="n">http</span><span class="o">://</span><span class="n">www</span><span class="o">.</span><span class="na">fileformat</span><span class="o">.</span><span class="na">info</span><span class="sr">/info/unicode/char/2163/i</span><span class="n">ndex</span><span class="o">.</span><span class="na">htm</span>
+  <span class="o">[</span><span class="mi">3</span><span class="o">]:</span> <span class="n">http</span><span class="o">://</span><span class="n">www</span><span class="o">.</span><span class="na">markitdown</span><span class="o">.</span><span class="na">net</span><span class="o">/</span>
+  <span class="o">[</span><span class="mi">4</span><span class="o">]:</span> <span class="n">http</span><span class="o">://</span><span class="n">daringfireball</span><span class="o">.</span><span class="na">net</span><span class="sr">/projects/markdown/</span><span class="n">basics</span>
+  <span class="o">[</span><span class="mi">5</span><span class="o">]:</span> <span class="n">http</span><span class="o">://</span><span class="n">daringfireball</span><span class="o">.</span><span class="na">net</span><span class="sr">/projects/markdown/s</span><span class="n">yntax</span>
+</pre></div>
+
+
+<blockquote>
+<p>The above file is also a great Intro to Markdown. If you didn't know that.</p>
+</blockquote>
+<h2>4. Creating HTML and Publishing</h2>
+<p>When the article of yours is written, and safely saved in the content folder. You can burn the heat by firing up the following command in your site's directory.</p>
+<div class="highlight"><pre><span></span>make clean html serve
+</pre></div>
+
+
+<p>The first word <code>make</code> initiates the makefile, accepts the options <code>clean</code>, which deletes previous builds. Which are none in your case. Then the <code>html</code> is processed to convert to html. The last option <code>serve</code> now opens a local server in your computer, which you can access to open your blog. In your favorite browser type <code>localhost:8000</code> in address bar and you will have your blog running, but only on your computer.</p>
+<p>To publish this on github, copy the contents of output folder to your git repo of branch <code>gh-pages</code>. Then push the new commit and open your github site address. ( which normally is something like the following <code>user_name.github.io/repo_name</code>)</p>
+<p>Viola here is your markdown powered blog ready, now you write articles, and follow the last step to publish.</p>
+        				</div>
+        			</div>
+
+
+	<div style="clear: both;">&nbsp;</div>
+	</div>
+
+			<div id="sidebar">
+
+				<div id="logo">
+					<h1><a href="/index.html">Lynx</a></h1>
+				</div>
+
+				<div id="menu">
+
+					<ul>
+						<li ><a href="/index.html">Home</a></li>
+						<li ><a href="/archives.html">Archives</a></li>
+					</ul>
+				</div>
+
+				<ul>
+					<li>
+						<h2>Categories</h2>
+
+						<ul>
+							 <li ><a href="/category/design.html">design</a></li>
+							 <li ><a href="/category/git.html">git</a></li>
+							 <li ><a href="/category/math.html">math</a></li>
+							 <li ><a href="/category/programming.html">programming</a></li>
+							 <li ><a href="/category/software.html">software</a></li>
+							 <li class="active"><a href="/category/web.html">web</a></li>
+
+						</ul>
+
+					</li>
+
+					<li>
+							<h2><a href="/tags.html" id="tag-sdbar">Tags</a></h2>
+							<ul>
+									<li><a href="/tag/blog.html" >blog</a></li>
+									<li><a href="/tag/pelican.html" >pelican</a></li>
+									<li><a href="/tag/github.html" >github</a></li>
+									<li><a href="/tag/cpp.html" >cpp</a></li>
+									<li><a href="/tag/web.html" >web</a></li>
+									<li><a href="/tag/productivity.html" >productivity</a></li>
+									<li><a href="/tag/telegram.html" >telegram</a></li>
+									<li><a href="/tag/prime.html" >prime</a></li>
+									<li><a href="/tag/color.html" >color</a></li>
+									<li><a href="/tag/programming.html" >programming</a></li>
+									<li><a href="/tag/git.html" >git</a></li>
+							</ul>
+					</li>
+
+					<li>
+
+						<h2>Blog Roll</h2>
+						<ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://architdwivedi.cf/">Archit's Blog</a></li>
+						</ul>
+					</li>
+
+                    <li>
+                            <h2>Social</h2>
+                            <ul>
+
+                                <li><a href="/" rel="alternate">Flux Atom</a></li>
+
+
+                                <li><a href="https://twitter.com/adityaultra">Twitter</a></li>
+                                <li><a href="#">Telegram</a></li>
+                            </ul>
+                    </li>
+
+
+				</ul>
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+	</div>
+
+
+<div id="footer">
+	<p>Copyright (c) 2015 AdiUltra. All rights reserved. </p>
+
+	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
+
+</p>
+</div>
+
+
+<script>renderMathInElement(
+          document.body,
+          {
+              delimiters: [
+                  {left: "$$", right: "$$", display: true},
+                  {left: "\\[", right: "\\]", display: true},
+                  {left: "$", right: "$", display: false},
+                  {left: "\\(", right: "\\)", display: false}
+              ]
+          }
+      );
+</script>
+</body>
+</html>

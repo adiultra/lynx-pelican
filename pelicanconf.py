@@ -35,7 +35,7 @@ SOCIAL = (('Twitter', 'https://twitter.com/adityaultra'),
 
 DEFAULT_PAGINATION = 10
 
-THEME = "/home/aditya/projects/ethereal"
+THEME = "/home/adi/Projects/ethereal"
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
